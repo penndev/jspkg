@@ -1,0 +1,12 @@
+.vscode/
+node_modules/
+.git/
+
+.DS_Store
+.gitignore
+
+tsconfig.type.json
+package.json
+package-lock.json
+
+

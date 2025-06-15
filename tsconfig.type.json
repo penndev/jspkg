@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,         // 仅生成引导文件
+    "emitDeclarationOnly": true,
+    "allowJs": true,
+    "checkJs": false,
+    "module": "ESNext",
+    "target": "ES6",
+    "esModuleInterop": true,
+    "outDir": "types",           // 声明文件输出到 types
+    "rootDir": "."               // 告诉 tsc 保留源目录结构
+  },
+  "include": ["utils/**/*.js"]
+}

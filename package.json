@@ -1,0 +1,27 @@
+{
+  "name": "penndev",
+  "version": "0.0.1",
+  "main": "index.js",
+  "exports": {
+    "./utils": {
+      "import": "./utils/index.js",
+      "require": "./utils/index.js",
+      "types": "./types/utils/index.d.ts"
+    }
+  },
+  "scripts": {
+    "type": "rimraf types && tsc -p tsconfig.type.json",
+    "push": "npm run type && npm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}
