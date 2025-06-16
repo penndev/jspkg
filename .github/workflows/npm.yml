@@ -1,0 +1,28 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' # 或你项目使用的版本
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Run install
+        run: npm install
+
+      - name: Publish to npm
+        run: npm run push
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

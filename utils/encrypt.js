@@ -99,8 +99,37 @@ const digest = async (algorithm, data) => {
   return new Uint8Array(digest);
 };
 
+
+/**
+ * 使用HMAC对消息进行签名，并返回base64 URL编码的签名。
+ * https://developer.mozilla.org/zh-CN/docs/Web/API/SubtleCrypto/importKey
+ * @param {string} msg 签名内容
+ * @param {string} key 密钥
+ * @param {string} algorithm  - 哈希算法名称。支持的值包括：
+ *  - "SHA-1"（不建议在加密应用中使用）
+ *  - "SHA-256"
+ *  - "SHA-384"
+ *  - "SHA-512"
+ * @returns Promise<Uint8Array>
+ */
+const hmac = async (msg, key, algorithm = "SHA-256") => {
+  const encoder = new TextEncoder();
+  const msgData = encoder.encode(msg);
+  const keyRaw = encoder.encode(key);
+  const cryptoKey = await crypto.subtle.importKey(
+    "raw",
+    keyRaw,
+    { name: "HMAC", hash: { name: algorithm } },
+    false,
+    ["sign"]
+  );
+  const signature = await crypto.subtle.sign("HMAC", cryptoKey, msgData);
+  return new Uint8Array(signature);
+};
+
 export {
     base64URLDecode,
     base64URLEncode,
-    digest
+    digest,
+    hmac,
 }

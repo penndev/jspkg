@@ -8,7 +8,8 @@ export {
 export {
     base64URLDecode,
     base64URLEncode,
-    digest
+    digest,
+    hmac
 } from "./encrypt.js"
 
 export {

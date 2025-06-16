@@ -65,7 +65,7 @@ const byteFormat = (byteLen) => {
 
 /**
  * 格式化字节传输单位
- * @param {number} byteLen 字节数
+ * @param {number} bit 字节数
  * @returns string 1GBps
  */
 const bpsFormat = (bit) => {
