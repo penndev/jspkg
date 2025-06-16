@@ -13,11 +13,11 @@
     "type": "rimraf types && tsc -p tsconfig.type.json",
     "push": "npm run type && npm publish"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["penndev", "utils"],
+  "author": "github.com/penndev",
   "license": "MIT",
   "type": "module",
-  "description": "",
+  "description": "Archive project dependencies",
   "dependencies": {
     "typescript": "^5.8.3"
   },
