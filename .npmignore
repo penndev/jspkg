@@ -2,6 +2,7 @@
 node_modules/
 .git/
 .github/
+test/
 
 .DS_Store
 .gitignore
