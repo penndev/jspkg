@@ -44,12 +44,14 @@ const secFormat = (sec) => {
  * @param {number} byteLen 10240
  * @returns {string} 10M(byte)
  */
-const byteFormat = (byteLen) => {
-  const TB = 1099511627776;
-  const GB = 1073741824;
-  const MB = 1048576;
-  const KB = 1024;
-
+const TB = 1099511627776;
+const GB = 1073741824;
+const MB = 1048576;
+const KB = 1024;
+const byteFormat = (byteLen = 0) => {
+  if (typeof byteLen == "number"){
+    byteLen = 0
+  }
   if (byteLen >= TB) {
     return (byteLen / TB).toFixed(2) + "T(Byte)";
   } else if (byteLen >= GB) {
