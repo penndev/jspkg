@@ -1,5 +1,3 @@
-
-
 /**
  * 时间戳格式化工具
  * @param {string} dateString Y-m-d H:i:s
@@ -29,11 +27,26 @@ const timeFormat = (dateString, timestamp) => {
  * @param {number} sec 多少秒之前
  * @returns string
  */
+const Second = 1;
+const Minute = 60 * Second;
+const Hour = 60 * Minute;
+const Day = 24 * Hour;
+const Week = 7 * Day;
+const Month = 30 * Day;
+const Year = 12 * Month;
 const secFormat = (sec) => {
-  if (sec >= 3600) {
-    return (sec / 3600).toFixed(2) + "小时";
-  } else if (sec >= 60) {
-    return (sec / 60).toFixed(2) + "分钟";
+  if (sec >= Year) {
+    return (sec / Year).toFixed(2) + "年";
+  } else if (sec >= Month) {
+    return (sec / Month).toFixed(2) + "月";
+  // } else if (sec >= Week) {
+  //   return (sec / Week).toFixed(2) + "周";
+  } else if (sec >= Day) {
+    return (sec / Day).toFixed(2) + "天";
+  } else if (sec >= Hour) {
+    return (sec / Hour).toFixed(2) + "时";
+  } else if (sec >= Minute) {
+    return (sec / Minute).toFixed(2) + "分";
   } else {
     return sec + "秒";
   }
@@ -44,24 +57,35 @@ const secFormat = (sec) => {
  * @param {number} byteLen 10240
  * @returns {string} 10M(byte)
  */
-const TB = 1099511627776;
-const GB = 1073741824;
-const MB = 1048576;
 const KB = 1024;
+const MB = 1024 * KB;
+const GB = 1024 * MB;
+const TB = 1024 * GB;
+const PB = 1024 * TB;
+// const EB = 1024 * PB;
+// const ZB = 1024 * EB;
+
 const byteFormat = (byteLen = 0) => {
-  if (typeof byteLen == "number"){
-    byteLen = 0
+  if (typeof byteLen != "number") {
+    byteLen = 0;
   }
-  if (byteLen >= TB) {
-    return (byteLen / TB).toFixed(2) + "T(Byte)";
+  // if (byteLen >= ZB) {
+  //   return (byteLen / ZB).toFixed(2) + "(ZByte)";
+  // } else if (byteLen >= EB) {
+  //   return (byteLen / EB).toFixed(2) + "(EByte)";
+  // } else
+  if (byteLen >= PB) {
+    return (byteLen / PB).toFixed(2) + "(PByte)";
+  } else if (byteLen >= TB) {
+    return (byteLen / TB).toFixed(2) + "(TByte)";
   } else if (byteLen >= GB) {
-    return (byteLen / GB).toFixed(2) + "G(Byte)";
+    return (byteLen / GB).toFixed(2) + "(GByte)";
   } else if (byteLen >= MB) {
-    return (byteLen / MB).toFixed(2) + "M(Byte)";
+    return (byteLen / MB).toFixed(2) + "(MByte)";
   } else if (byteLen >= KB) {
-    return (byteLen / KB).toFixed(2) + "K(Byte)";
+    return (byteLen / KB).toFixed(2) + "(KByte)";
   } else {
-    return byteLen + "Byte";
+    return byteLen + "(Byte)";
   }
 };
 
@@ -72,19 +96,14 @@ const byteFormat = (byteLen = 0) => {
  */
 const bpsFormat = (bit) => {
   if (bit > 1000000000) {
-    return (bit / 1000000000).toFixed(2) + "G(Bps)";
+    return (bit / 1000000000).toFixed(2) + "(GBps)";
   } else if (bit > 1000000) {
-    return (bit / 1000000).toFixed(1) + "M(Bps)";
+    return (bit / 1000000).toFixed(1) + "(MBps)";
   } else if (bit > 1000) {
-    return (bit / 1000).toFixed(1) + "K(BPS)";
+    return (bit / 1000).toFixed(1) + "(KBPS)";
   } else {
-    return bit + "BPS";
+    return bit + "(BPS)";
   }
 };
 
-export {
-    timeFormat,
-    secFormat,
-    byteFormat,
-    bpsFormat
-}
+export { timeFormat, secFormat, byteFormat, bpsFormat };
