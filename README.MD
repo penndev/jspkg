@@ -1,6 +1,8 @@
 # JsPkg
 > 常用的函数与包封装为库
 
+## 安装
+> jspkg名称已占用以用户名来做包名
 ```bash
 npm i penndev
 ```
